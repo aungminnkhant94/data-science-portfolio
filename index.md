@@ -27,16 +27,24 @@ do Fire Weather Index (FWI) components relate to the burned area?
 **Findings:** Analysis of 517 fires (2000-2003, UCI Forest Fires dataset) shows
 that fire damage is heavily concentrated in late summer - August and September
 alone account for more than 80% of the total burned area. The largest fires
-cluster under hot, low-humidity conditions. However, the burned-area
-distribution is extremely skewed (median 0.5 ha vs. max 1,090.8 ha), and
-individual FWI indices correlate only weakly with log(area), so simple linear
-models are not enough to predict fire size.
+cluster under hot, low-humidity conditions, and nearly half of all fires burn
+less than 1 ha while the largest single fire burned 1,090.8 ha.
 
 ![Burned area vs temperature, coloured by humidity](assets/temp_vs_area.png)
 
 The scatter plot above shows that fires burning more than ~100 ha occur almost
 exclusively above 20 deg C with relative humidity below 45%, which makes the
 seasonal peak easy to explain.
+
+**The modelling twist:** I then benchmarked a Random Forest regressor against a
+median baseline to predict log(burned area) from the FWI indices and weather.
+The model could not beat the baseline (R2 = -0.01 on a held-out test set) -
+even though feature importances confirm that temperature, humidity and the
+drought codes carry the most signal. The conclusion: burned area is driven
+largely by factors outside the dataset (ignition cause, firefighting response,
+terrain), an honest negative result that matches the original research paper.
+
+![Random Forest feature importances](assets/feature_importance.png)
 
 - **Project repository:** [github.com/aungminnkhant94/data-science-project](https://github.com/aungminnkhant94/data-science-project)
 - **Status:** Completed
