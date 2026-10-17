@@ -32,6 +32,12 @@ distribution is extremely skewed (median 0.5 ha vs. max 1,090.8 ha), and
 individual FWI indices correlate only weakly with log(area), so simple linear
 models are not enough to predict fire size.
 
+![Burned area vs temperature, coloured by humidity](assets/temp_vs_area.png)
+
+The scatter plot above shows that fires burning more than ~100 ha occur almost
+exclusively above 20 deg C with relative humidity below 45%, which makes the
+seasonal peak easy to explain.
+
 - **Project repository:** [github.com/aungminnkhant94/data-science-project](https://github.com/aungminnkhant94/data-science-project)
 - **Status:** Completed
 
